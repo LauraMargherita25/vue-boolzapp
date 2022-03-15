@@ -5,6 +5,14 @@
     box-sizing: border-box;
 }
 
+html{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+ul{
+    list-style: none;
+}
+
 .container{
     height: 100vh;
 
@@ -22,7 +30,7 @@
 }
 
 .background .green_banner{
-    height: 100px;
+    height: 150px;
 
     background-color: #009688;
 }
@@ -49,6 +57,66 @@
 
     background-color: blue;
 }
+
+.box .contacts .user{
+    height: 70px;
+
+    padding: .5rem;
+
+    background-color: #eaeaea;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* user left section */
+.user .user_profile{
+    display: flex;
+    align-items: center;
+}
+
+.user_img{
+    width: 50px;
+    height: 50px;
+    
+    border-radius: 100px;
+
+    overflow: hidden;
+}
+
+.user_img img{
+    height: 100%;
+
+    object-fit: contain;
+    object-position: center;
+}
+
+.user_name{
+    margin: .5rem;
+}
+/* /user left section */
+
+/* user right section */
+.user .user_function{
+    display: flex;
+}
+
+.user_function .functio_btn{
+    width: 50px;
+
+    font-size: 30px;
+    text-align: center;
+    line-height: 50px;
+    color: #b1b1b1;
+    
+        cursor: pointer;
+}
+
+.functio_btn ì{
+    vertical-align: middle;
+}
+/* /user right section */
 
 /* chat */
 .box .chat{
