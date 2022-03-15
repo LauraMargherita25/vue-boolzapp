@@ -61,9 +61,6 @@ a{
     width: 40%;
 
     background-color: #ffffff;
-
-    display: flex;
-    flex-direction: column;
 }
 
 /* header */
@@ -132,6 +129,9 @@ a{
 
 
 /* main */
+main{
+    height: calc(900px - 70px);
+}
 
 /* --- alert --- */
 .notification_alert{
@@ -199,8 +199,53 @@ a{
     border: none;
 
     background-color: #ffffff;
-
 }
+
+/* --- open chats --- */
+.open_chats{
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.contact_profile{
+    padding: 1rem;
+
+    display: flex;
+}
+
+.contact_profile .contact_img{
+    width: 60px;
+    height: 60px;
+    
+    border-radius: 100px;
+    margin-right: 1rem;
+    
+    overflow: hidden;
+}
+
+.contact_profile .contact_img img{
+    height: 100%;
+
+    object-fit: contain;
+    object-position: center;
+}
+
+.contact_info{
+    flex-grow: 1;
+}
+
+.contact_info .last_mex{
+    margin-top: .3rem;
+
+    font-size: 14px;
+    color: gray;
+}
+
+.contact_profile .last_log{
+    font-size: 14px;
+    color: gray;
+}
+
 /* /main */
 /* /contacts */
 
