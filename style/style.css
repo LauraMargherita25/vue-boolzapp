@@ -298,7 +298,46 @@ a{
 .chat main{
     height: calc(100% - 140px);
 
+    /* padding: 3rem 5rem; */
+    
     background-image: url(../img/mine.jpg);
+    
+    overflow-y: scroll;
+}
+
+.chat_wrapper{
+    height: 100%;
+    
+    padding: 3rem 5rem;
+    
+    display: flex;
+    flex-direction: column;
+}
+
+.message{
+    width: 300px;
+    
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.green{
+    background-color: #d5f9ba;
+
+    align-self: flex-end;
+    
+}
+
+.white{
+    background-color: #ffffff;
+
+    align-self: flex-start;
+}
+
+.mex_time{
+    text-align: end;
+    font-size: 10px;
+    color: #b1b1b1;
 }
 /* /main */
 
