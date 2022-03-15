@@ -65,8 +65,6 @@ a{
 
 /* header */
 .box .contacts .user{
-    height: 70px;
-
     padding: .5rem;
 
     background-color: #eaeaea;
@@ -129,10 +127,9 @@ a{
 
 
 /* main */
-main{
+/* main{
     height: calc(900px - 70px);
-    /* overflow-y: scroll; */
-}
+} */
 
 /* --- alert --- */
 .notification_alert{
@@ -204,13 +201,13 @@ main{
 
 /* --- open chats --- */
 .open_chats{
-    height: 100%;
-    /* overflow-y: hidden; */
+    max-height: 704px;
     overflow-y: scroll; 
 }
 
 .contact_profile{
     padding: 1rem;
+    border-bottom: 1px solid #e0e0e0;
 
     display: flex;
 }
@@ -232,11 +229,11 @@ main{
     object-position: center;
 }
 
-.contact_info{
+.contact_data{
     flex-grow: 1;
 }
 
-.contact_info .last_mex{
+.contact_data .last_mex{
     margin-top: .3rem;
 
     font-size: 14px;

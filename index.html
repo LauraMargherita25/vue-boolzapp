@@ -85,150 +85,23 @@
                     </div>
 
                     <!-- open chats -->
-                    <div class="open_chats">
-                        <div class="contact_profile">
+                    <div class="open_chats" id="root">
+                        <div v-for="contact in arrContacts" class="contact_profile">
                             
                             <div class="contact_img">
-                                <img src="img/avatar_1.jpg" alt="contact profile avatar">
+                                <img :src="'img/' + contact.contactImg" alt="contact profile avatar">
                             </div>
     
-                            <div class="contact_info">
-                               <div class="contact_name">Michele</div> 
-                               <div class="last_mex">Ultimo messaggio inviato</div>
+                            <div class="contact_data">
+                               <div class="contact_name">{{ contact.contactData.contactName }}</div> 
+                               <div class="last_mex">{{ contact.contactData.lastMex }}</div>
                             </div>
                             
                             <div class="last_log">
-                                <p>12:00</p>
+                                <p>{{ contact.lastLog }}</p>
                             </div>
                         </div>
 
-                        <div class="contact_profile">
-                            
-                            <div class="contact_img">
-                                <img src="img/avatar_1.jpg" alt="contact profile avatar">
-                            </div>
-    
-                            <div class="contact_info">
-                               <div class="contact_name">Michele</div> 
-                               <div class="last_mex">Ultimo messaggio inviato</div>
-                            </div>
-                            
-                            <div class="last_log">
-                                <p>12:00</p>
-                            </div>
-                        </div>
-
-                        <div class="contact_profile">
-                            
-                            <div class="contact_img">
-                                <img src="img/avatar_1.jpg" alt="contact profile avatar">
-                            </div>
-    
-                            <div class="contact_info">
-                               <div class="contact_name">Michele</div> 
-                               <div class="last_mex">Ultimo messaggio inviato</div>
-                            </div>
-                            
-                            <div class="last_log">
-                                <p>12:00</p>
-                            </div>
-                        </div>
-
-                        <div class="contact_profile">
-                            
-                            <div class="contact_img">
-                                <img src="img/avatar_1.jpg" alt="contact profile avatar">
-                            </div>
-    
-                            <div class="contact_info">
-                               <div class="contact_name">Michele</div> 
-                               <div class="last_mex">Ultimo messaggio inviato</div>
-                            </div>
-                            
-                            <div class="last_log">
-                                <p>12:00</p>
-                            </div>
-                        </div>
-
-                        <div class="contact_profile">
-                            
-                            <div class="contact_img">
-                                <img src="img/avatar_1.jpg" alt="contact profile avatar">
-                            </div>
-    
-                            <div class="contact_info">
-                               <div class="contact_name">Michele</div> 
-                               <div class="last_mex">Ultimo messaggio inviato</div>
-                            </div>
-                            
-                            <div class="last_log">
-                                <p>12:00</p>
-                            </div>
-                        </div>
-
-                        <div class="contact_profile">
-                            
-                            <div class="contact_img">
-                                <img src="img/avatar_1.jpg" alt="contact profile avatar">
-                            </div>
-    
-                            <div class="contact_info">
-                               <div class="contact_name">Michele</div> 
-                               <div class="last_mex">Ultimo messaggio inviato</div>
-                            </div>
-                            
-                            <div class="last_log">
-                                <p>12:00</p>
-                            </div>
-                        </div>
-
-                        <div class="contact_profile">
-                            
-                            <div class="contact_img">
-                                <img src="img/avatar_1.jpg" alt="contact profile avatar">
-                            </div>
-    
-                            <div class="contact_info">
-                               <div class="contact_name">Michele</div> 
-                               <div class="last_mex">Ultimo messaggio inviato</div>
-                            </div>
-                            
-                            <div class="last_log">
-                                <p>12:00</p>
-                            </div>
-                        </div>
-
-                        <div class="contact_profile">
-                            
-                            <div class="contact_img">
-                                <img src="img/avatar_1.jpg" alt="contact profile avatar">
-                            </div>
-    
-                            <div class="contact_info">
-                               <div class="contact_name">Michele</div> 
-                               <div class="last_mex">Ultimo messaggio inviato</div>
-                            </div>
-                            
-                            <div class="last_log">
-                                <p>12:00</p>
-                            </div>
-                        </div>
-
-                        <div class="contact_profile">
-                            
-                            <div class="contact_img">
-                                <img src="img/avatar_1.jpg" alt="contact profile avatar">
-                            </div>
-    
-                            <div class="contact_info">
-                               <div class="contact_name">Michele</div> 
-                               <div class="last_mex">Ultimo messaggio inviato</div>
-                            </div>
-                            
-                            <div class="last_log">
-                                <p>12:00</p>
-                            </div>
-                        </div>
                     </div>
 
                 </main>
@@ -242,8 +115,9 @@
 
         </div>
     </div>
+    
     <!-- script -->
-    <script src="JS/sript.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="JS/sript.js"></script>
 </body>
 </html>
