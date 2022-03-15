@@ -32,13 +32,28 @@
 
 /* box */
 .box{
-    width: 1000px;
-    height: 800px;
-
-    background-color: seagreen;
+    width: 1500px;
+    height: 900px;
 
     position: absolute;
     top: 50%; 
     left: 50%;
     transform: translate(-50%, -50%);
+
+    display: flex;
 }
+
+/* contacts */
+.box .contacts{
+    width: 40%;
+
+    background-color: blue;
+}
+
+/* chat */
+.box .chat{
+    width: 60%;
+
+    background-color: red;
+}
+/* /box */
