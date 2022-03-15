@@ -4,3 +4,41 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+.container{
+    height: 100vh;
+
+    position: relative;
+}
+
+
+
+/* background */
+.background{
+    height: 100%;
+
+    background-color: #d9dbd4;
+
+}
+
+.background .green_banner{
+    height: 100px;
+
+    background-color: #009688;
+}
+
+
+
+
+/* box */
+.box{
+    width: 1000px;
+    height: 800px;
+
+    background-color: seagreen;
+
+    position: absolute;
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
