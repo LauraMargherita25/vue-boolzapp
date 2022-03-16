@@ -14,57 +14,46 @@
     
     <div class="container">
         
-        <!-- background -->
-        <div class="background">
-            
-            <div class="green_banner">
-                
-            </div>
-            
-        </div>
-        
         <!-- main section with content -->
         <div class="box" id="root">
             <!-- qui abbiamo una parte di destra e una di sinistra -->
             
             <!-- section left with contacts -->
-            <section class="contacts">
+            <section class="right_section">
 
                 <!-- header -->
-                <header class="user">
+                <header>
 
-                    <ul class="user_profile">
-                        <li class="user_img">
-                           <img src="img/avatar_io.jpg" alt="profile avatar">
-                        </li>
+                    <div class="user">
+                        
+                        <ul class="user_profile">
+                            <li class="user_img">
+                               <img src="img/avatar_io.jpg" alt="profile avatar">
+                            </li>
+    
+                            <li class="user_name">Sofia</li>
+                        </ul>
+    
+                        <ul class="user_function">
+                            <li>
+                                <div class="function_btn">
+                                    <i class="fa-solid fa-circle-notch"></i>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="function_btn">
+                                    <i class="fa-solid fa-message"></i>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="function_btn">
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                </div>
+                            </li>
+                        </ul>
 
-                        <li class="user_name">Sofia</li>
-                    </ul>
+                    </div>
 
-                    <ul class="user_function">
-                        <li>
-                            <div class="function_btn">
-                                <i class="fa-solid fa-circle-notch"></i>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="function_btn">
-                                <i class="fa-solid fa-message"></i>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="function_btn">
-                                <i class="fa-solid fa-ellipsis-vertical"></i>
-                            </div>
-                        </li>
-                    </ul>
-
-                </header>
-                <!-- header -->
-
-                <!-- main -->
-                <main>
-                    
                     <!-- alert -->
                     <div class="notification_alert">
                         <div class="notification_icon">
@@ -79,21 +68,46 @@
                     <!-- serch -->
                     <div class="serch">
                         <div class="serch_btn"><i class="fa-solid fa-magnifying-glass"></i></div>
-                        <input type="search" name="search" id="search" placeholder="Cerca o inizia una nuova chat">
-
+                        <input @keyup="findContact" v-model="serchContact" type="search" name="search" id="search" placeholder="Cerca o inizia una nuova chat">
+    
                     </div>
+
+                </header>
+                <!-- header -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <!-- main -->
+                <main>
 
                     <!-- open chats -->
                     <div class="open_chats">
-                        <div v-for="(contact, index) in arrContacts" class="contact_profile" @click="openChat(index)">
+                        <div v-if="contact.serch" v-for="(contact, index) in arrContacts" class="contact_profile" @click="openChat(index)">
                             
                             <div class="contact_img">
                                 <img :src="'img/' + contact.contactImg" alt="contact profile avatar">
                             </div>
     
                             <div class="contact_data">
-                               <div class="contact_name">{{ contact.contactData.contactName }}</div> 
-                               <div class="last_mex">{{ contact.contactData.lastMex }}</div>
+                               <div class="contact_name">{{ contact.contactName }}</div> 
+                               <div class="last_mex">{{ contact.arrMexs[contact.arrMexs.length - 1].mexText }}</div>
                             </div>
                             
                             <div class="last_log">
@@ -117,7 +131,7 @@
                             <img src="img/avatar_1.jpg" alt="">
                         </li>
                         <li class="recipient_data">
-                            <p>Michele</p>
+                            <p>{{ arrContacts[activeChat].contactName }}</p>
                             <p>Ultimo accesso oggi alle 12:00</p>
                         </li>
                     </ul>
@@ -143,26 +157,12 @@
 
                 <!-- chat -->
                 <main>
-                    <div class="chat_wrapper" v-for="contact in arrContacts">
-
-                        <!-- {{ contact.arrMexs }} -->
+                    <div class="chat_wrapper" >
 
                         <div v-for="mex in arrContacts[activeChat].arrMexs" class="message" :class="mex.mexStatus == 'recived' ? 'white' : 'green'">
                             <p>{{ mex.mexText }}</p>
                             <p class="mex_time">{{ mex.mexTime }}</p> 
                         </div>
-
-                        
-
-                        <!-- <div v-for="mex in arrMexs" class="message green">
-                            <p>{{ mex.mexText }}</p>
-                            <p class="mex_time">{{ mex.mexTime }}</p> 
-                        </div>
-    
-                        <div class="message white">
-                            <p>Hai portato fuori il cane?</p>
-                            <p class="mex_time">15:50</p> 
-                        </div> -->
 
                     </div>
                 </main>
@@ -174,7 +174,7 @@
                     </div>
 
                     <div class="new_message" id="root">
-                        <input v-model="newMsgText" type="text" placeholder="Scrivi un messaggio" @keydown.enter="submitNewMex(activeChat), reciveNewMex(activeChat)">
+                        <input v-model="newMsgText" type="text" placeholder="Scrivi un messaggio" @keydown.enter="reciveNewMex(activeChat), submitNewMex(activeChat)">
                     </div>
 
                     <div class="btn_vocal_message">

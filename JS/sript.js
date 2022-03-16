@@ -1,15 +1,14 @@
 const app = new Vue({
     el: "#root",
     data:{
+        serchContact: "",
         activeChat: 0,
         newMsgText: "",
         recivedMsgText:"",
         arrContacts: [
             {
                 "contactImg": "avatar_1.jpg",
-                "contactData": {
-                    "contactName": "Michele"
-                },
+                "contactName": "Michele",
                 "lastLog": "12:00",
                 arrMexs: [
                     {
@@ -22,14 +21,12 @@ const app = new Vue({
                         "mexTime": "16:45",
                         "mexStatus": "recived"
                     }
-                ]
+                ],
+                serch: true,
             },
             {
                 "contactImg": "avatar_2.jpg",
-                "contactData": {
-                    "contactName": "Fabio",
-                    
-                },
+                "contactName": "Fabio",
                 "lastLog": "12:00",
                 arrMexs: [
                     {
@@ -48,7 +45,8 @@ const app = new Vue({
                         "mexText": "Hai portato fuori il cane?",
                         "mexTime": "16:45"
                     }
-                ]
+                ],
+                serch: true,
             },
             /*{
                 "contactImg": "avatar_3.jpg",
@@ -101,39 +99,42 @@ const app = new Vue({
         ]
     },
     methods: {
-        submitNewMex(activeChat){
-            this.arrContacts[activeChat].arrMexs.push({ mexText: this.newMsgText,mexTime: "12.30", mexStatus:"send"});
-            this.newMsgText = "";
-            // this.objNewMex.mexTime = "15:50";
-            
-            
-        },
         openChat(index){
             this.activeChat = index;
         },
-        reciveNewMex(activeChat){
-            setTimeout(() => {
-                let h = new Date();
-                let n = h.getHours() + ":" + h.getMinutes();
-                this.recivedMsgText = "ok";
-                this.arrContacts[activeChat].arrMexs.push({ mexText: this.recivedMsgText, mexTime: n, mexStatus:"recived" });
-            },1000)
-        }
-        /* getHours() {
+        submitNewMex(activeChat){
+            // this.objNewMex.mexTime = "15:50";
             
-            let today = new Date();
-            console.log(today)
-            let time = today.getHours() + ":" + today.getMinutes();
-            console.log(time)
-        },*/
-        /*currentDateTime() {
-            const current = new Date();
-            const date = current.getFullYear()+'-'+(current.getMonth()+1)+'-'+current.getDate();
-            const time = current.getHours() + ":" + current.getMinutes() + ":" + current.getSeconds();
-            const dateTime = date +' '+ time;
-      
-            return dateTime;
-        }*/
+            if (this.newMsgText != "") {
+                
+                this.arrContacts[activeChat].arrMexs.push({ mexText: this.newMsgText,mexTime: "12.30", mexStatus:"send"});
+                this.newMsgText = "";
+            }
+            
+        },
+        reciveNewMex(activeChat){
+            
+            if (this.newMsgText != "") {
+                
+                setTimeout(() => {
+                    let h = new Date();
+                    let n = h.getHours() + ":" + h.getMinutes();
+                    this.recivedMsgText = "ok";
+                    this.arrContacts[activeChat].arrMexs.push({ mexText: this.recivedMsgText, mexTime: n, mexStatus:"recived" });
+                },1000)
+            }
+            
+        },
+        findContact()  {
+            this.arrContacts.forEach(element => {
+                if (element.contactName.toLowerCase().includes(this.serchContact.toLowerCase())) {
+                    element.serch = true;
+                } else {
+                    element.serch = false;
+                }
+            });
+        }
+
         
     }
 })
