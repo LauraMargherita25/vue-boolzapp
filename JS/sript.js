@@ -3,16 +3,7 @@ const app = new Vue({
     data:{
         activeChat: 0,
         newMsgText: "",
-        /*arrMexs: [
-            {
-                "mexText": "Ciao! Come va?",
-                "mexTime": "15:50"
-            },
-            {
-                "mexText": "Hai portato fuori il cane?",
-                "mexTime": "16:45"
-            }
-        ],*/
+        recivedMsgText:"",
         arrContacts: [
             {
                 "contactImg": "avatar_1.jpg",
@@ -23,11 +14,13 @@ const app = new Vue({
                 arrMexs: [
                     {
                         "mexText": "Ciao! Come va?",
-                        "mexTime": "15:50"
+                        "mexTime": "15:50",
+                        "mexStatus": "send"
                     },
                     {
                         "mexText": "Hai portato fuori il cane?",
-                        "mexTime": "16:45"
+                        "mexTime": "16:45",
+                        "mexStatus": "recived"
                     }
                 ]
             },
@@ -109,7 +102,7 @@ const app = new Vue({
     },
     methods: {
         submitNewMex(activeChat){
-            this.arrContacts[activeChat].arrMexs.push({ mexText: this.newMsgText,mexTime: "12.30" });
+            this.arrContacts[activeChat].arrMexs.push({ mexText: this.newMsgText,mexTime: "12.30", mexStatus:"send"});
             this.newMsgText = "";
             // this.objNewMex.mexTime = "15:50";
             
@@ -117,6 +110,14 @@ const app = new Vue({
         },
         openChat(index){
             this.activeChat = index;
+        },
+        reciveNewMex(activeChat){
+            setTimeout(() => {
+                let h = new Date();
+                let n = h.getHours() + ":" + h.getMinutes();
+                this.recivedMsgText = "ok";
+                this.arrContacts[activeChat].arrMexs.push({ mexText: this.recivedMsgText, mexTime: n, mexStatus:"recived" });
+            },1000)
         }
         /* getHours() {
             
