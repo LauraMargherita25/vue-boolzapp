@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
-    <!-- comincio con inserire in html gli elementi che vedo nell'img di esempio -->
     
     <div class="container">
         
@@ -148,10 +147,12 @@
 
                         <!-- {{ contact.arrMexs }} -->
 
-                        <div v-for="mex in arrContacts[activeChat].arrMexs" class="message green">
+                        <div v-for="mex in arrContacts[activeChat].arrMexs" class="message" :class="mex.mexStatus == 'recived' ? 'white' : 'green'">
                             <p>{{ mex.mexText }}</p>
-                            <p class="mex_time"></p> 
+                            <p class="mex_time">{{ mex.mexTime }}</p> 
                         </div>
+
+                        
 
                         <!-- <div v-for="mex in arrMexs" class="message green">
                             <p>{{ mex.mexText }}</p>
@@ -173,7 +174,7 @@
                     </div>
 
                     <div class="new_message" id="root">
-                        <input v-model="newMsgText" type="text" placeholder="Scrivi un messaggio" @keydown.enter="submitNewMex(activeChat)">
+                        <input v-model="newMsgText" type="text" placeholder="Scrivi un messaggio" @keydown.enter="submitNewMex(activeChat), reciveNewMex(activeChat)">
                     </div>
 
                     <div class="btn_vocal_message">
