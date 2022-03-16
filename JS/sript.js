@@ -1,6 +1,20 @@
 const app = new Vue({
     el: "#root",
     data:{
+        objNewMex: {
+            "mexText": "",
+            "mexTime": ""
+        },
+        arrMexs: [
+            {
+                "mexText": "Ciao! Come va?",
+                "mexTime": "15:50"
+            },
+            {
+                "mexText": "Hai portato fuori il cane?",
+                "mexTime": "16:45"
+            }
+        ],
         arrContacts: [
             {
                 "contactImg": "avatar_1.jpg",
@@ -67,5 +81,32 @@ const app = new Vue({
                 "lastLog": "12:00"
             },
         ]
+    },
+    methods: {
+        submitNewMex(){
+            this.arrMexs.push({ ...this.objNewMex });
+            this.objNewMex.mexText = "";
+            // this.objNewMex.mexTime = this.getHours();
+            
+            
+        },
+        getHours() {
+            
+            let today = new Date();
+            console.log(today)
+            let time = today.getHours() + ":" + today.getMinutes();
+            console.log(time)
+        },
+        currentDateTime() {
+            const current = new Date();
+            const date = current.getFullYear()+'-'+(current.getMonth()+1)+'-'+current.getDate();
+            const time = current.getHours() + ":" + current.getMinutes() + ":" + current.getSeconds();
+            const dateTime = date +' '+ time;
+      
+            return dateTime;
+        }
+        
     }
 })
+
+
