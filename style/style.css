@@ -213,6 +213,12 @@ a{
     display: flex;
 }
 
+.contact_profile:hover{
+    background-color: #e9ebeb;
+
+    cursor: pointer;
+}
+
 .contact_profile .contact_img{
     width: 60px;
     height: 60px;

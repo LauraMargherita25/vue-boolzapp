@@ -25,7 +25,7 @@
         </div>
         
         <!-- main section with content -->
-        <div class="box">
+        <div class="box" id="root">
             <!-- qui abbiamo una parte di destra e una di sinistra -->
             
             <!-- section left with contacts -->
@@ -85,8 +85,8 @@
                     </div>
 
                     <!-- open chats -->
-                    <div class="open_chats" id="root">
-                        <div v-for="contact in arrContacts" class="contact_profile">
+                    <div class="open_chats">
+                        <div v-for="contact in arrContacts" class="contact_profile" @click="openChat">
                             
                             <div class="contact_img">
                                 <img :src="'img/' + contact.contactImg" alt="contact profile avatar">
@@ -111,8 +111,8 @@
             <!-- section right with chat -->
             <section class="chat">
 
-                <!-- con info sul contatto -->
-                <header id="root">
+                <!-- contatto -->
+                <header>
                     <ul class="recipient">
                         <li>
                             <img src="img/avatar_1.jpg" alt="">
@@ -142,31 +142,38 @@
                     </ul>
                 </header>
 
-                <!-- con la chat -->
+                <!-- chat -->
                 <main>
-                    <div class="chat_wrapper">
+                    <div class="chat_wrapper" v-for="contact in arrContacts">
 
-                        <div class="message green">
-                            <p>Ciao! Come va?</p>
-                            <p class="mex_time">15:50</p> 
+                        <!-- {{ contact.arrMexs }} -->
+
+                        <div v-for="mex in contact.arrMexs" class="message green">
+                            <p>{{ contact.arrMexs.mexText }}</p>
+                            <p class="mex_time"></p> 
+                        </div>
+
+                        <!-- <div v-for="mex in arrMexs" class="message green">
+                            <p>{{ mex.mexText }}</p>
+                            <p class="mex_time">{{ mex.mexTime }}</p> 
                         </div>
     
                         <div class="message white">
                             <p>Hai portato fuori il cane?</p>
                             <p class="mex_time">15:50</p> 
-                        </div>
+                        </div> -->
 
                     </div>
                 </main>
 
-                <!-- con campo test -->
+                <!-- scrivo nuovo messaggio -->
                 <footer>
                     <div class="btn_add_emoji">
                         <i class="fa-regular fa-face-smile"></i>
                     </div>
 
-                    <div class="new_message">
-                        <input type="text" placeholder="Scrivi un messaggio">
+                    <div class="new_message" id="root">
+                        <input v-model="objNewMex.mexText" type="text" placeholder="Scrivi un messaggio" @keydown.enter="submitNewMex">
                     </div>
 
                     <div class="btn_vocal_message">

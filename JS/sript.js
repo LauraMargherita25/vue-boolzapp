@@ -3,9 +3,9 @@ const app = new Vue({
     data:{
         objNewMex: {
             "mexText": "",
-            "mexTime": ""
+            "mexTime": "15:50",
         },
-        arrMexs: [
+        /*arrMexs: [
             {
                 "mexText": "Ciao! Come va?",
                 "mexTime": "15:50"
@@ -14,7 +14,7 @@ const app = new Vue({
                 "mexText": "Hai portato fuori il cane?",
                 "mexTime": "16:45"
             }
-        ],
+        ],*/
         arrContacts: [
             {
                 "contactImg": "avatar_1.jpg",
@@ -22,7 +22,17 @@ const app = new Vue({
                     "contactName": "Michele",
                     "lastMex": "Ultimo messaggio inviato"
                 },
-                "lastLog": "12:00"
+                "lastLog": "12:00",
+                arrMexs: [
+                    {
+                        "mexText": "Ciao! Come va?",
+                        "mexTime": "15:50"
+                    },
+                    {
+                        "mexText": "Hai portato fuori il cane?",
+                        "mexTime": "16:45"
+                    }
+                ]
             },
             {
                 "contactImg": "avatar_2.jpg",
@@ -86,24 +96,27 @@ const app = new Vue({
         submitNewMex(){
             this.arrMexs.push({ ...this.objNewMex });
             this.objNewMex.mexText = "";
-            // this.objNewMex.mexTime = this.getHours();
+            // this.objNewMex.mexTime = "15:50";
             
             
         },
-        getHours() {
+        /* getHours() {
             
             let today = new Date();
             console.log(today)
             let time = today.getHours() + ":" + today.getMinutes();
             console.log(time)
-        },
-        currentDateTime() {
+        },*/
+        /*currentDateTime() {
             const current = new Date();
             const date = current.getFullYear()+'-'+(current.getMonth()+1)+'-'+current.getDate();
             const time = current.getHours() + ":" + current.getMinutes() + ":" + current.getSeconds();
             const dateTime = date +' '+ time;
       
             return dateTime;
+        }*/
+        openChat(){
+            console.log("hai aperto questa chat")
         }
         
     }
