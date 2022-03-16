@@ -86,7 +86,7 @@
 
                     <!-- open chats -->
                     <div class="open_chats">
-                        <div v-for="contact in arrContacts" class="contact_profile" @click="openChat">
+                        <div v-for="(contact, index) in arrContacts" class="contact_profile" @click="openChat(index)">
                             
                             <div class="contact_img">
                                 <img :src="'img/' + contact.contactImg" alt="contact profile avatar">
@@ -148,8 +148,8 @@
 
                         <!-- {{ contact.arrMexs }} -->
 
-                        <div v-for="mex in contact.arrMexs" class="message green">
-                            <p>{{ contact.arrMexs.mexText }}</p>
+                        <div v-for="mex in arrContacts[activeChat].arrMexs" class="message green">
+                            <p>{{ mex.mexText }}</p>
                             <p class="mex_time"></p> 
                         </div>
 
@@ -173,7 +173,7 @@
                     </div>
 
                     <div class="new_message" id="root">
-                        <input v-model="objNewMex.mexText" type="text" placeholder="Scrivi un messaggio" @keydown.enter="submitNewMex">
+                        <input v-model="newMsgText" type="text" placeholder="Scrivi un messaggio" @keydown.enter="submitNewMex(activeChat)">
                     </div>
 
                     <div class="btn_vocal_message">

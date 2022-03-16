@@ -1,10 +1,8 @@
 const app = new Vue({
     el: "#root",
     data:{
-        objNewMex: {
-            "mexText": "",
-            "mexTime": "15:50",
-        },
+        activeChat: 0,
+        newMsgText: "",
         /*arrMexs: [
             {
                 "mexText": "Ciao! Come va?",
@@ -19,8 +17,7 @@ const app = new Vue({
             {
                 "contactImg": "avatar_1.jpg",
                 "contactData": {
-                    "contactName": "Michele",
-                    "lastMex": "Ultimo messaggio inviato"
+                    "contactName": "Michele"
                 },
                 "lastLog": "12:00",
                 arrMexs: [
@@ -38,11 +35,29 @@ const app = new Vue({
                 "contactImg": "avatar_2.jpg",
                 "contactData": {
                     "contactName": "Fabio",
-                    "lastMex": "Ultimo messaggio inviato"
+                    
                 },
-                "lastLog": "12:00"
+                "lastLog": "12:00",
+                arrMexs: [
+                    {
+                        "mexText": "Ciao! Come va?",
+                        "mexTime": "15:50"
+                    },
+                    {
+                        "mexText": "Hai portato fuori il cane?",
+                        "mexTime": "16:45"
+                    },
+                    {
+                        "mexText": "Ciao! Come va?",
+                        "mexTime": "15:50"
+                    },
+                    {
+                        "mexText": "Hai portato fuori il cane?",
+                        "mexTime": "16:45"
+                    }
+                ]
             },
-            {
+            /*{
                 "contactImg": "avatar_3.jpg",
                 "contactData": {
                     "contactName": "Samuele",
@@ -89,17 +104,20 @@ const app = new Vue({
                     "lastMex": "Ultimo messaggio inviato"
                 },
                 "lastLog": "12:00"
-            },
+            },*/
         ]
     },
     methods: {
-        submitNewMex(){
-            this.arrMexs.push({ ...this.objNewMex });
-            this.objNewMex.mexText = "";
+        submitNewMex(activeChat){
+            this.arrContacts[activeChat].arrMexs.push({ mexText: this.newMsgText,mexTime: "12.30" });
+            this.newMsgText = "";
             // this.objNewMex.mexTime = "15:50";
             
             
         },
+        openChat(index){
+            this.activeChat = index;
+        }
         /* getHours() {
             
             let today = new Date();
@@ -115,9 +133,6 @@ const app = new Vue({
       
             return dateTime;
         }*/
-        openChat(){
-            console.log("hai aperto questa chat")
-        }
         
     }
 })
