@@ -5,6 +5,7 @@
     box-sizing: border-box;
 }
 
+
 html{
     font-family: 'Lato', sans-serif;
 }
@@ -19,25 +20,12 @@ a{
 }
 
 .container{
+    width: 100%;
     height: 100vh;
 
-    position: relative;
-}
+    display: flex;
 
-
-
-/* background */
-.background{
-    height: 100%;
-
-    background-color: #d9dbd4;
-
-}
-
-.background .green_banner{
-    height: 150px;
-
-    background-color: #009688;
+    background-image: linear-gradient(to bottom, #009688 0px, #009688 15vh, #dddbd1 15vh,#d2dbdc 100%);
 }
 
 
@@ -48,16 +36,13 @@ a{
     width: 1500px;
     height: 900px;
 
-    position: absolute;
-    top: 50%; 
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin: auto;
 
     display: flex;
 }
 
 /* contacts */
-.box .contacts{
+.box .right_section{
     width: 40%;
 
     border-right: 1px solid #d9dbd4;
@@ -66,14 +51,13 @@ a{
 }
 
 /* header */
-.contacts .user{
+.right_section .user{
     height: 70px;
     padding: .5rem;
 
     background-color: #eaeaea;
 
     display: flex;
-    justify-content: space-between;
     align-items: center;
 }
 
@@ -89,6 +73,7 @@ a{
     height: 50px;
     
     border-radius: 100px;
+    margin-right: .5rem;
 
     overflow: hidden;
 }
@@ -98,10 +83,6 @@ a{
 
     object-fit: contain;
     object-position: center;
-}
-
-.user_name{
-    margin: .5rem;
 }
 
 
@@ -124,13 +105,6 @@ a{
 .function_btn ì{
     vertical-align: middle;
 }
-
-/* /header */
-
-
-
-
-/* main */
 
 /* --- alert --- */
 .notification_alert{
@@ -199,9 +173,17 @@ a{
 
     background-color: #ffffff;
 }
+/* /header */
+
+
+
+
+/* main */
+
 
 /* --- open chats --- */
 .open_chats{
+    height: 700px;
     max-height: 700px;
     overflow-y: scroll; 
 }
