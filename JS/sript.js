@@ -14,12 +14,14 @@ const app = new Vue({
                     {
                         "mexText": "Ciao! Come va?",
                         "mexTime": "15:50",
-                        "mexStatus": "send"
+                        "mexStatus": "send",
+                        "panelMenu": false
                     },
                     {
                         "mexText": "Hai portato fuori il cane?",
                         "mexTime": "16:45",
-                        "mexStatus": "recived"
+                        "mexStatus": "recived",
+                        "panelMenu": false
                     }
                 ],
                 serch: true,
@@ -31,19 +33,23 @@ const app = new Vue({
                 arrMexs: [
                     {
                         "mexText": "Ciao! Come va?",
-                        "mexTime": "15:50"
+                        "mexTime": "15:50",
+                        "mexStatus": "send"
                     },
                     {
-                        "mexText": "Hai portato fuori il cane?",
-                        "mexTime": "16:45"
+                        "mexText": "Male",
+                        "mexTime": "16:45",
+                        "mexStatus": "recived"
                     },
                     {
-                        "mexText": "Ciao! Come va?",
-                        "mexTime": "15:50"
+                        "mexText": "Hai portato fuori il pinguino?",
+                        "mexTime": "15:50",
+                        "mexStatus": "send"
                     },
                     {
-                        "mexText": "Hai portato fuori il cane?",
-                        "mexTime": "16:45"
+                        "mexText": "Vado a comprare le sigarette",
+                        "mexTime": "16:45",
+                        "mexStatus": "send"
                     }
                 ],
                 serch: true,
@@ -133,9 +139,13 @@ const app = new Vue({
                     element.serch = false;
                 }
             });
+        },
+        showPanel(contactIndex, arrMexsIndex){
+            this.arrContacts[contactIndex].arrMexs[arrMexsIndex].panelMenu = !this.arrContacts[contactIndex].arrMexs[arrMexsIndex].panelMenu
         }
-
-        
+        deleteMex(activeChat){
+            this.arrContacts[activeChat].arrMexs.splice();
+        }
     }
 })
 

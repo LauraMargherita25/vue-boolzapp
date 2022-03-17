@@ -128,7 +128,7 @@
                 <header>
                     <ul class="recipient">
                         <li>
-                            <img src="img/avatar_1.jpg" alt="">
+                            <img :src="'img/' + arrContacts[activeChat].contactImg" alt="">
                         </li>
                         <li class="recipient_data">
                             <p>{{ arrContacts[activeChat].contactName }}</p>
@@ -159,9 +159,24 @@
                 <main>
                     <div class="chat_wrapper" >
 
-                        <div v-for="mex in arrContacts[activeChat].arrMexs" class="message" :class="mex.mexStatus == 'recived' ? 'white' : 'green'">
-                            <p>{{ mex.mexText }}</p>
-                            <p class="mex_time">{{ mex.mexTime }}</p> 
+                        <div v-for="(mex, i) in arrContacts[activeChat].arrMexs" class="message" :class="mex.mexStatus == 'recived' ? 'white' : 'green'">
+                            
+                            <div style="display: flex;">
+                                <p>{{ mex.mexText }}</p>
+                                <i class="fa fa-chevron-down f-right message-options" @click="showPanel(activeChat, i)"></i>
+                                <div class="message-options-panel" :class="mex.panelMenu ? 'active' : '' ">
+                                    <div class="message-info">Info messaggio</div>
+                                    <div class="message-destroy" @deleteMex>Cancella messaggio</div>
+                                </div>
+                            </div>
+                            
+                            <p class="mex_time">{{ mex.mexTime }}</p>
+                            
+                            
+                            <!-- <div class="message-options-panel" style="display: none;">
+                                <div class="message-info">Info messaggio</div>
+                                <div class="message-destroy">Cancella messaggio</div>
+                            </div> -->
                         </div>
 
                     </div>
