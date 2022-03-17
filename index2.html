@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>vue-boolzappt</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style/style2.css">
+</head>
+<body>
+    
+    <div class="container">
+
+        <!-- Main content -->
+        <div class="box">
+
+            <!-- Right -->
+            <div class="right_section">
+
+
+                <!-- User -->
+                <div class="user">
+                    <div class="user_profile">
+                        <img src="img/avatar_io.jpg" alt="">
+                        <p>Laura</p>
+                    </div>
+                    <ul class="user_btns">
+                        <li>
+                            <div class="function_btn">
+                                <i class="fa-solid fa-circle-notch"></i>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="function_btn">
+                                <i class="fa-solid fa-message"></i>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="function_btn">
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- alert -->
+                <div class="alert">
+
+                    <div class="alert_icon">
+                        <i class="fa-solid fa-bell-slash"></i>
+                    </div>
+
+                    <div class="alert_text">
+                        <p>Ricevi notifiche di nuovi messaggi</p>
+                        <a href="">Attiva notifiche desktop</a>
+                    </div>
+
+                </div>
+
+                <!-- serch -->
+                <div class="serch">
+                    
+                    <div class="serch_btn">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <input type="search" name="search" id="search" placeholder="Cerca una chat">
+    
+                </div>
+
+                <!-- Active chats -->
+                <div class="active_chats">
+                    <div class="contact">
+                            
+                        <div class="contact_img">
+                            <img src="img/avatar_1.jpg" alt="">
+                        </div>
+
+                        <div class="contact_data">
+                           <div class="contact_name">Michele</div> 
+                           <div class="contact_last_mex">Ultimo messaggio inviato</div>
+                        </div>
+                        
+                        <div class="contact_last_log">
+                            <p>12:00</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Left -->
+            <div class="left_section">
+                <!-- contatto -->
+                <header>
+                    <ul class="recipient">
+                        
+                        <img src="img/avatar_1.jpg" alt="">
+                        
+                        <li class="recipient_data">
+                            <div class="recipient_name">Michele</div> 
+                           <div class="recipient_last_log">Ultimo log 12:00</div>
+                        </li>
+                    </ul>
+
+                    <ul class="chat_function">
+                        <li>
+                            <div class="function_btn">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="function_btn">
+                                <i class="fa-solid fa-paperclip"></i>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="function_btn">
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </div>
+                        </li>
+                    </ul>
+                </header>
+
+                <!-- chat -->
+                <main>
+                    <div class="chat_wrapper" >
+
+                        <div class="mex sent">
+                            
+                            <p>Ciao</p>
+                            <p class="mex_time">12:00</p>
+                            
+                        </div>
+
+                        <div class="mex recived">
+                            
+                            <div style="display: flex;">
+                                <p>ciao</p>
+                                <i class="fa fa-chevron-down f-right mex-options"></i>
+                                <div class="mex-options-panel">
+                                    <div class="mex-info">Info messaggio</div>
+                                    <div class="mex-destroy">Cancella messaggio</div>
+                                </div>
+                            </div>
+                            <p class="mex_time">12:00</p>
+                            
+                        </div>
+
+                    </div>
+                </main>
+
+                <!-- scrivo nuovo messaggio -->
+                <footer>
+                    <div class="btn_add_emoji">
+                        <i class="fa-regular fa-face-smile"></i>
+                    </div>
+
+                    <div class="new_message" id="root">
+                        <input v-model="newMsgText" type="text" placeholder="Scrivi un messaggio" @keydown.enter="reciveNewMex(activeChat), submitNewMex(activeChat)">
+                    </div>
+
+                    <div class="btn_vocal_message">
+                        <i class="fa-solid fa-microphone"></i>
+                    </div>
+                    
+                </footer>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- script -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="JS/script2.js"></script>
+</body>
+</html>
