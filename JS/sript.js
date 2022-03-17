@@ -34,22 +34,26 @@ const app = new Vue({
                     {
                         "mexText": "Ciao! Come va?",
                         "mexTime": "15:50",
-                        "mexStatus": "send"
+                        "mexStatus": "send",
+                        "panelMenu": false
                     },
                     {
                         "mexText": "Male",
                         "mexTime": "16:45",
-                        "mexStatus": "recived"
+                        "mexStatus": "recived",
+                        "panelMenu": false
                     },
                     {
                         "mexText": "Hai portato fuori il pinguino?",
                         "mexTime": "15:50",
-                        "mexStatus": "send"
+                        "mexStatus": "send",
+                        "panelMenu": false
                     },
                     {
                         "mexText": "Vado a comprare le sigarette",
                         "mexTime": "16:45",
-                        "mexStatus": "send"
+                        "mexStatus": "send",
+                        "panelMenu": false
                     }
                 ],
                 serch: true,
@@ -142,9 +146,9 @@ const app = new Vue({
         },
         showPanel(contactIndex, arrMexsIndex){
             this.arrContacts[contactIndex].arrMexs[arrMexsIndex].panelMenu = !this.arrContacts[contactIndex].arrMexs[arrMexsIndex].panelMenu
-        }
+        },
         deleteMex(activeChat){
-            this.arrContacts[activeChat].arrMexs.splice();
+            this.arrContacts[activeChat].arrMexs.splice(-1, 1);
         }
     }
 })
