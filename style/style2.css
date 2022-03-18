@@ -55,7 +55,7 @@ a{
     width: 40%;
     height: 100%;
     
-    background-color: red;
+    border-right: 1px solid #d9dbd4;
 }
 
 
@@ -173,7 +173,6 @@ a{
 
 .serch input{
     width: 80%;
-    height: 2rem;
 
     padding: .5rem;
     border: none;

@@ -12,7 +12,7 @@
 </head>
 <body>
     
-    <div class="container">
+    <div class="container" id="root">
 
         <!-- Main content -->
         <div class="box">
@@ -24,8 +24,8 @@
                 <!-- User -->
                 <div class="user">
                     <div class="user_profile">
-                        <img src="img/avatar_io.jpg" alt="">
-                        <p>Laura</p>
+                        <img :src="getImgSrc(user.userImg)" :alt="user.userName">
+                        <p>{{ user.userName }}</p>
                     </div>
                     <ul class="user_btns">
                         <li>
@@ -72,14 +72,14 @@
 
                 <!-- Active chats -->
                 <div class="active_chats">
-                    <div class="contact">
+                    <div v-for="(chat, index) in arrChats" class="contact" @click="openChat(index)">
                             
                         <div class="contact_img">
-                            <img src="img/avatar_1.jpg" alt="">
+                            <img :src="getImgSrc(chat.contact.contactImg)" :alt="chat.contact.contactName">
                         </div>
 
                         <div class="contact_data">
-                           <div class="contact_name">Michele</div> 
+                           <div class="contact_name">{{ chat.contact.contactName }}</div> 
                            <div class="contact_last_mex">Ultimo messaggio inviato</div>
                         </div>
                         
@@ -97,10 +97,10 @@
                 <header>
                     <ul class="recipient">
                         
-                        <img src="img/avatar_1.jpg" alt="">
+                        <img :src=" getImgSrc(arrChats[activeChatIndex].contact.contactImg)" :alt="arrChats[activeChatIndex].contact.contactName">
                         
                         <li class="recipient_data">
-                            <div class="recipient_name">Michele</div> 
+                            <div class="recipient_name">{{ arrChats[activeChatIndex].contact.contactName }}</div> 
                            <div class="recipient_last_log">Ultimo log 12:00</div>
                         </li>
                     </ul>
@@ -126,26 +126,19 @@
 
                 <!-- chat -->
                 <main>
-                    <div class="chat_wrapper" >
+                    <div class="chat_wrapper">
 
-                        <div class="mex sent">
-                            
-                            <p>Ciao</p>
-                            <p class="mex_time">12:00</p>
-                            
-                        </div>
-
-                        <div class="mex recived">
+                        <div v-for="mex in arrChats[activeChatIndex].arrMexs" class="mex" :class="mex.mexStatus == 'sent' ? 'sent' : 'recived'">
                             
                             <div style="display: flex;">
-                                <p>ciao</p>
+                                <p>{{ mex.mexText }}</p>
                                 <i class="fa fa-chevron-down f-right mex-options"></i>
                                 <div class="mex-options-panel">
                                     <div class="mex-info">Info messaggio</div>
                                     <div class="mex-destroy">Cancella messaggio</div>
                                 </div>
                             </div>
-                            <p class="mex_time">12:00</p>
+                            <p class="mex_time">{{ mex.mexTime }}</p>
                             
                         </div>
 
@@ -159,7 +152,7 @@
                     </div>
 
                     <div class="new_message" id="root">
-                        <input v-model="newMsgText" type="text" placeholder="Scrivi un messaggio" @keydown.enter="reciveNewMex(activeChat), submitNewMex(activeChat)">
+                        <input v-model="newMexText" @keyup.enter="sendNewMex" type="text" placeholder="Scrivi un messaggio">
                     </div>
 
                     <div class="btn_vocal_message">
