@@ -158,8 +158,9 @@
                         <input v-model.trim="arrChats[activeChatIndex].newMexText" @keyup.enter="sendNewMex" type="text" placeholder="Scrivi un messaggio">
                     </div>
 
-                    <div class="btn_vocal_message">
-                        <i class="fa-solid fa-microphone"></i>
+                    <div class="btn_vocal_or_send">
+                            <i class="fa-solid fa-microphone" :class="arrChats[activeChatIndex].newMexText == '' ? 'active' : '' "></i>
+                            <i class="fa-solid fa-paper-plane" :class="arrChats[activeChatIndex].newMexText != '' ? 'active' : '' " @click="sendNewMex"></i>
                     </div>
                     
                 </footer>

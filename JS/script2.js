@@ -107,8 +107,16 @@ const app = new Vue({
                 let h = new Date();
                 let nh = h.getHours() + ":" + h.getMinutes();
 
+                const arrAnswers = [
+                    "Ok",
+                    "うる せ え ぶっとばす ぞ",
+                    "おいしい"
+                ]
+
+                let rndAnswer = Math.floor(Math.random() * arrAnswers.length);
+
                 const newMex = {
-                    mexText: "Ok",
+                    mexText: arrAnswers[rndAnswer],
                     mexTime: nh,
                     mexStatus: "recived",
                     panelMenu: false,

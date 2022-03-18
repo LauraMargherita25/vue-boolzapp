@@ -442,10 +442,12 @@ a{
     background-color: var(--gray_header);
 
     display: flex;
+
+    position: relative;
 }
 
 .left_section footer .btn_add_emoji, 
-.left_section footer .btn_vocal_message{
+.left_section footer .btn_vocal_or_send{
     width: 100px;
 
     font-size: 25px;
@@ -456,6 +458,27 @@ a{
     align-items: center;
 
     cursor: pointer;
+}
+
+.left_section footer .btn_vocal_or_send{
+    position: relative;
+}
+
+.fa-microphone.active{
+    display: block;
+}
+
+.fa-microphone{
+    display: none;
+}
+
+.fa-paper-plane{
+    position: absolute;
+    display: none;
+}
+
+.fa-paper-plane.active{
+    display: block;
 }
 
 .left_section footer .new_message{
