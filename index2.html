@@ -155,7 +155,7 @@
                     </div>
 
                     <div class="new_message" id="root">
-                        <input v-model="arrChats[activeChatIndex].newMexText" @keyup.enter="sendNewMex" type="text" placeholder="Scrivi un messaggio">
+                        <input v-model.trim="arrChats[activeChatIndex].newMexText" @keyup.enter="sendNewMex" type="text" placeholder="Scrivi un messaggio">
                     </div>
 
                     <div class="btn_vocal_message">

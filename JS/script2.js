@@ -79,21 +79,24 @@ const app = new Vue({
         },
         sendNewMex(){
 
-            let h = new Date();
-            let nh = h.getHours() + ":" + h.getMinutes();
-
-            const activeChat = this.arrChats[this.activeChatIndex];
-            const newMex = {
-                mexText: activeChat.newMexText,
-                mexTime: nh,
-                mexStatus: "sent",
-                panelMenu: false,
+            if (this.arrChats.newMexText == "") {
+                
+                let h = new Date();
+                let nh = h.getHours() + ":" + h.getMinutes();
+    
+                const activeChat = this.arrChats[this.activeChatIndex];
+                const newMex = {
+                    mexText: activeChat.newMexText,
+                    mexTime: nh,
+                    mexStatus: "sent",
+                    panelMenu: false,
+                }
+                activeChat.arrMexs.push(newMex);
+    
+                activeChat.newMexText = "";
+    
+                this.recivedNewMex(this.activeChatIndex)
             }
-            activeChat.arrMexs.push(newMex);
-
-            activeChat.newMexText = "";
-
-            this.recivedNewMex(this.activeChatIndex)
 
         },
         recivedNewMex(chatIndex){
