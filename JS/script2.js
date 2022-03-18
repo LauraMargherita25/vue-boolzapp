@@ -5,15 +5,16 @@ const app = new Vue({
             userName: "Laura",
             userImg: "_io"
         },
+        searchContact: "",
         activeChatIndex: 0,
-
-        newMexText: "",
         arrChats:[
             {
                 contact: {
                     contactName: "Michele",
                     contactImg: "_1",
                 },
+                serch: true,
+                newMexText: "",
                 arrMexs:[{
                     mexText: "Ciao Michele",
                     mexTime: "12:00",
@@ -30,6 +31,8 @@ const app = new Vue({
                     contactName: "Gesualdo",
                     contactImg: "_2",
                 },
+                serch: true,
+                newMexText: "",
                 arrMexs:[{
                     mexText: "Ciao Gesualdo",
                     mexTime: "12:00",
@@ -46,6 +49,8 @@ const app = new Vue({
                     contactName: "Berenilda",
                     contactImg: "_3",
                 },
+                serch: true,
+                newMexText: "",
                 arrMexs:[{
                     mexText: "Ciao Berenilda",
                     mexTime: "12:00",
@@ -69,16 +74,46 @@ const app = new Vue({
         sendNewMex(){
 
             let h = new Date();
-            let n = h.getHours() + ":" + h.getMinutes();
+            let nh = h.getHours() + ":" + h.getMinutes();
 
-            this.arrChats[this.activeChatIndex].arrMexs.push({
-                mexText: this.newMexText,
-                mexTime: n,
+            const activeChat = this.arrChats[this.activeChatIndex];
+            const newMex = {
+                mexText: activeChat.newMexText,
+                mexTime: nh,
                 mexStatus: "sent",
-            })
+            }
+            activeChat.arrMexs.push(newMex);
 
-            this.newMexText = "";
+            activeChat.newMexText = "";
 
+            this.recivedNewMex(this.activeChatIndex)
+
+        },
+        recivedNewMex(chatIndex){
+
+            setTimeout(() => {
+
+                let h = new Date();
+                let nh = h.getHours() + ":" + h.getMinutes();
+
+                const newMex = {
+                    mexText: "Ok",
+                    mexTime: nh,
+                    mexStatus: "recived",
+                }
+
+                this.arrChats[chatIndex].arrMexs.push(newMex)
+            }, 3000);
+        },
+        findContact(){
+            this.arrChats.forEach(chat => {
+                if (chat.contact.contactName.toLowerCase().includes(this.searchContact.toLowerCase())) {
+                    chat.serch = true;
+                } else {
+                    chat.serch = false;
+                }
+            });
         }
     },
 })
+
