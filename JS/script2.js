@@ -19,11 +19,13 @@ const app = new Vue({
                     mexText: "Ciao Michele",
                     mexTime: "12:00",
                     mexStatus: "sent",
+                    panelMenu: false,
                 },
                 {
                     mexText: "Ciao",
                     mexTime: "12:00",
                     mexStatus: "recived",
+                    panelMenu: false,
                 }]
             },
             {
@@ -37,11 +39,13 @@ const app = new Vue({
                     mexText: "Ciao Gesualdo",
                     mexTime: "12:00",
                     mexStatus: "sent",
+                    panelMenu: false,
                 },
                 {
                     mexText: "Ciao",
                     mexTime: "12:00",
                     mexStatus: "recived",
+                    panelMenu: false,
                 }]
             },
             {
@@ -55,11 +59,13 @@ const app = new Vue({
                     mexText: "Ciao Berenilda",
                     mexTime: "12:00",
                     mexStatus: "sent",
+                    panelMenu: false,
                 },
                 {
                     mexText: "Ciao",
                     mexTime: "12:00",
                     mexStatus: "recived",
+                    panelMenu: false,
                 }]
             }
         ]
@@ -81,6 +87,7 @@ const app = new Vue({
                 mexText: activeChat.newMexText,
                 mexTime: nh,
                 mexStatus: "sent",
+                panelMenu: false,
             }
             activeChat.arrMexs.push(newMex);
 
@@ -100,10 +107,11 @@ const app = new Vue({
                     mexText: "Ok",
                     mexTime: nh,
                     mexStatus: "recived",
+                    panelMenu: false,
                 }
 
                 this.arrChats[chatIndex].arrMexs.push(newMex)
-            }, 3000);
+            }, 1000);
         },
         findContact(){
             this.arrChats.forEach(chat => {
@@ -113,6 +121,12 @@ const app = new Vue({
                     chat.serch = false;
                 }
             });
+        },
+        showPanel(contactIndex, arrMexsIndex){
+            this.arrChats[contactIndex].arrMexs[arrMexsIndex].panelMenu = !this.arrChats[contactIndex].arrMexs[arrMexsIndex].panelMenu
+        },
+        deleteMex(contactIndex, arrMexsIndex){
+            this.arrChats[contactIndex].arrMexs.splice(arrMexsIndex, 1);
         }
     },
 })

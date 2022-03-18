@@ -80,11 +80,11 @@
 
                         <div class="contact_data">
                            <div class="contact_name">{{ chat.contact.contactName }}</div> 
-                           <div class="contact_last_mex">Ultimo messaggio inviato</div>
+                           <div class="contact_last_mex">{{ chat.arrMexs[chat.arrMexs.length -1].mexText }}</div>
                         </div>
                         
                         <div class="contact_last_log">
-                            <p>12:00</p>
+                            <p>{{ chat.arrMexs[chat.arrMexs.length -1].mexTime }}</p>
                         </div>
                     </div>
                 </div>
@@ -101,7 +101,7 @@
                         
                         <li class="recipient_data">
                             <div class="recipient_name">{{ arrChats[activeChatIndex].contact.contactName }}</div> 
-                           <div class="recipient_last_log">Ultimo log 12:00</div>
+                           <div class="recipient_last_log">Online</div>
                         </li>
                     </ul>
 
@@ -128,16 +128,19 @@
                 <main>
                     <div class="chat_wrapper">
 
-                        <div v-for="mex in arrChats[activeChatIndex].arrMexs" class="mex" :class="mex.mexStatus == 'sent' ? 'sent' : 'recived'">
+                        <div v-for="(mex, indexMex) in arrChats[activeChatIndex].arrMexs" class="mex" :class="mex.mexStatus == 'sent' ? 'sent' : 'recived'">
                             
-                            <div style="display: flex;">
+                            <div style="display: flex; justify-content: space-between;">
                                 <p>{{ mex.mexText }}</p>
-                                <i class="fa fa-chevron-down f-right mex-options"></i>
-                                <div class="mex-options-panel">
+                                <div class="mex-options" @click="showPanel(activeChatIndex, indexMex)">
+                                    <i class="fa fa-chevron-down f-right "></i>
+                                </div>
+                                <div class="mex-options-panel" :class="mex.panelMenu ? 'active' : '' ">
                                     <div class="mex-info">Info messaggio</div>
-                                    <div class="mex-destroy">Cancella messaggio</div>
+                                    <div class="mex-destroy" @click="deleteMex(activeChatIndex, indexMex)">Cancella messaggio</div>
                                 </div>
                             </div>
+                            
                             <p class="mex_time">{{ mex.mexTime }}</p>
                             
                         </div>

@@ -30,6 +30,11 @@ a{
     text-decoration: none;
 }
 
+
+
+
+
+
 /* Background */
 .container{
     width: 100%;
@@ -268,8 +273,6 @@ a{
 .box .left_section{
     width: 60%;
     height: 100%;
-
-    background-color: blue;
 }
 
 /* header */
@@ -359,12 +362,24 @@ a{
 }
 
 .mex .mex-options{
-    display: none;
-    margin-left: 1rem;
+    width: 15px;
+    height: 15px;
+    margin-left: .5rem;
+
+    color: var(--gray_btn);
+    
     cursor: pointer;
+    
+    /* position:absolute;
+    top: 10px;
+    right: 10px; */
 }
 
-.mex:hover .mex-options{
+.mex .mex-options i{
+    display: none;
+}
+
+.mex:hover .mex-options i{
     display: block;
 }
 
@@ -380,8 +395,10 @@ a{
     
     background: white;
     box-shadow: 0px 0px 40px -15px rgba(0, 0, 0, 0.75);
-
+    
     display: none;
+    
+    overflow: hidden;
 }
 
 .mex-options-panel>div {
@@ -396,6 +413,14 @@ a{
     font-size: 14px;
     text-align: end;
 }
+
+.mex-options-panel>div:hover{
+    background-color: var(--gray_background);
+}
+
+/* .mex-options:hover .mex-options-panel{
+ display: block;
+} */
 
 .mex-options-panel.active{
     display: block;
